@@ -4,6 +4,8 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { placeholderPets } from '@/lib/placeholder-data';
 import type { Pet } from '@/lib/types';
+import BreedIdentifier from '@/components/breed-identifier';
+import { Separator } from '@/components/ui/separator';
 
 function PetCard({ pet }: { pet: Pet }) {
   return (
@@ -33,17 +35,22 @@ function PetCard({ pet }: { pet: Pet }) {
 
 export default function PetsPage() {
   return (
-    <div className="space-y-6">
-      <div className="flex justify-end">
-        <Button>
-          <PlusCircle className="mr-2 h-4 w-4" />
-          Add Pet
-        </Button>
-      </div>
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {placeholderPets.map((pet) => (
-          <PetCard key={pet.id} pet={pet} />
-        ))}
+    <div className="space-y-8">
+      <BreedIdentifier />
+      <Separator />
+      <div>
+        <div className="flex justify-between items-center mb-6">
+          <h2 className="text-2xl font-bold tracking-tight">My Pets</h2>
+          <Button>
+            <PlusCircle className="mr-2 h-4 w-4" />
+            Add Pet
+          </Button>
+        </div>
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {placeholderPets.map((pet) => (
+            <PetCard key={pet.id} pet={pet} />
+          ))}
+        </div>
       </div>
     </div>
   );

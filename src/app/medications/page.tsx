@@ -8,7 +8,7 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { placeholderMedications } from '@/lib/placeholder-data';
 import { Badge } from '@/components/ui/badge';
 
@@ -24,6 +24,7 @@ export default function MedicationsPage() {
       <Card>
         <CardHeader>
           <CardTitle>Medication Log</CardTitle>
+          <CardDescription>Detailed list of medications including utilization and posology.</CardDescription>
         </CardHeader>
         <CardContent>
           <Table>
@@ -33,6 +34,8 @@ export default function MedicationsPage() {
                 <TableHead>Medication</TableHead>
                 <TableHead>Dosage</TableHead>
                 <TableHead>Schedule</TableHead>
+                <TableHead>Utilization</TableHead>
+                <TableHead>Posology</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -44,6 +47,8 @@ export default function MedicationsPage() {
                   <TableCell>
                     <Badge variant="secondary">{med.schedule}</Badge>
                   </TableCell>
+                  <TableCell>{med.utilization}</TableCell>
+                  <TableCell>{med.posology}</TableCell>
                 </TableRow>
               ))}
             </TableBody>

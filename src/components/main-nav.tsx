@@ -9,6 +9,7 @@ import {
   CalendarDays,
   ShoppingCart,
   LayoutDashboard,
+  Building,
 } from 'lucide-react';
 
 import { cn } from '@/lib/utils';
@@ -45,6 +46,7 @@ const PawPrintIcon = (props: React.SVGProps<SVGSVGElement>) => (
 const menuItems = [
   { href: '/', label: 'Symptom Checker', icon: HeartPulse },
   { href: '/pets', label: 'My Pets', icon: PawPrint },
+  { href: '/farms', label: 'Farms', icon: Building },
   { href: '/medications', label: 'Medications', icon: Pill },
   { href: '/appointments', label: 'Appointments', icon: CalendarDays },
   { href: '/store', label: 'Store', icon: ShoppingCart },

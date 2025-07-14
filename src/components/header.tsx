@@ -6,6 +6,7 @@ import { SidebarTrigger } from '@/components/ui/sidebar';
 const pageTitles: { [key: string]: string } = {
   '/': 'AI Symptom Checker',
   '/pets': 'My Pets',
+  '/farms': 'Farms',
   '/medications': 'Medication Tracker',
   '/appointments': 'Appointment Log',
   '/store': 'Retail Store',

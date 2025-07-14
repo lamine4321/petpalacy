@@ -10,9 +10,11 @@ export interface Pet {
 export interface Medication {
   id: string;
   petName: string;
-  name: string;
+  name:string;
   dosage: string;
   schedule: string;
+  utilization: string;
+  posology: string;
 }
 
 export interface Appointment {
@@ -31,4 +33,19 @@ export interface Product {
   price: number;
   imageUrl: string;
   dataAiHint: string;
+}
+
+export interface Animal {
+  id: string;
+  name: string;
+  species: string;
+  photoUrl: string;
+  dataAiHint: string;
+}
+
+export interface Farm {
+  id: string;
+  name: string;
+  owner: string;
+  animals: Animal[];
 }

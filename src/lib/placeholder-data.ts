@@ -1,4 +1,4 @@
-import type { Pet, Medication, Appointment, Product } from './types';
+import type { Pet, Medication, Appointment, Product, Farm } from './types';
 
 export const placeholderPets: Pet[] = [
   { id: '1', name: 'Buddy', breed: 'Golden Retriever', age: 5, photoUrl: 'https://placehold.co/400x400.png', dataAiHint: 'golden retriever' },
@@ -7,10 +7,10 @@ export const placeholderPets: Pet[] = [
 ];
 
 export const placeholderMedications: Medication[] = [
-  { id: '1', petName: 'Buddy', name: 'Heartgard Plus', dosage: '1 tablet', schedule: 'Monthly' },
-  { id: '2', petName: 'Lucy', name: 'Feline Greenies', dosage: '5 treats', schedule: 'Daily' },
-  { id: '3', petName: 'Rocky', name: 'Rimadyl', dosage: '50mg', schedule: 'Twice daily' },
-  { id: '4', petName: 'Buddy', name: 'NexGard', dosage: '1 chew', schedule: 'Monthly' },
+  { id: '1', petName: 'Buddy', name: 'Heartgard Plus', dosage: '1 tablet', schedule: 'Monthly', utilization: 'Heartworm prevention', posology: 'Give one tablet monthly with food.' },
+  { id: '2', petName: 'Lucy', name: 'Feline Greenies', dosage: '5 treats', schedule: 'Daily', utilization: 'Dental care', posology: 'Up to 5 treats per day.' },
+  { id: '3', petName: 'Rocky', name: 'Rimadyl', dosage: '50mg', schedule: 'Twice daily', utilization: 'Pain and inflammation', posology: 'One 50mg tablet every 12 hours.' },
+  { id: '4', petName: 'Buddy', name: 'NexGard', dosage: '1 chew', schedule: 'Monthly', utilization: 'Flea and tick prevention', posology: 'One chewable tablet monthly.' },
 ];
 
 export const placeholderAppointments: Appointment[] = [
@@ -27,4 +27,26 @@ export const placeholderProducts: Product[] = [
   { id: '4', name: 'Cozy Pet Bed', category: 'Accessories', price: 75.00, imageUrl: 'https://placehold.co/300x300.png', dataAiHint: 'pet bed' },
   { id: '5', name: 'Organic Catnip', category: 'Treats', price: 8.99, imageUrl: 'https://placehold.co/300x300.png', dataAiHint: 'catnip' },
   { id: '6', name: 'Heavy-Duty Leash', category: 'Accessories', price: 24.99, imageUrl: 'https://placehold.co/300x300.png', dataAiHint: 'dog leash' },
+];
+
+export const placeholderFarms: Farm[] = [
+  {
+    id: '1',
+    name: 'Green Meadows Farm',
+    owner: 'John Doe',
+    animals: [
+      { id: 'a1', name: 'Bessie', species: 'Cow', photoUrl: 'https://placehold.co/400x400.png', dataAiHint: 'cow' },
+      { id: 'a2', name: 'Cluck', species: 'Chicken', photoUrl: 'https://placehold.co/400x400.png', dataAiHint: 'chicken' },
+    ],
+  },
+  {
+    id: '2',
+    name: 'Sunny Slope Ranch',
+    owner: 'Jane Smith',
+    animals: [
+      { id: 'a3', name: 'Spirit', species: 'Horse', photoUrl: 'https://placehold.co/400x400.png', dataAiHint: 'horse' },
+      { id: 'a4', name: 'Porky', species: 'Pig', photoUrl: 'https://placehold.co/400x400.png', dataAiHint: 'pig' },
+      { id: 'a5', name: 'Woolly', species: 'Sheep', photoUrl: 'https://placehold.co/400x400.png', dataAiHint: 'sheep' },
+    ],
+  },
 ];

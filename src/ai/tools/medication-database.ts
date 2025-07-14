@@ -23,6 +23,30 @@ const FAKE_MEDICATION_DB: {[key: string]: any} = {
     commonUses: 'Flea and tick prevention and treatment.',
     sideEffects: 'Vomiting, diarrhea, lethargy, and dry/flaky skin have been reported.',
   },
+  apoquel: {
+    name: 'Apoquel (Oclacitinib)',
+    description: 'A medication that provides fast-acting relief from itching and inflammation for dogs with allergic dermatitis.',
+    commonUses: 'Control of pruritus (itching) associated with allergic dermatitis and control of atopic dermatitis.',
+    sideEffects: 'Vomiting, diarrhea, lethargy, and decreased appetite are the most common side effects. Can increase susceptibility to infection.',
+  },
+  galliprant: {
+    name: 'Galliprant (Grapiprant)',
+    description: 'A non-steroidal anti-inflammatory drug (NSAID) used to control pain and inflammation associated with osteoarthritis in dogs.',
+    commonUses: 'Osteoarthritis pain and inflammation.',
+    sideEffects: 'Vomiting, diarrhea, decreased appetite, and lethargy. Not for use in dogs with known hypersensitivity to grapiprant.',
+  },
+  bravecto: {
+    name: 'Bravecto (Fluralaner)',
+    description: 'A chewable tablet or topical solution for dogs and cats that kills fleas and ticks for up to 12 weeks.',
+    commonUses: 'Long-lasting flea and tick prevention and treatment.',
+    sideEffects: 'Vomiting, decreased appetite, diarrhea, and lethargy are among the most common side effects reported.',
+  },
+  simparica: {
+    name: 'Simparica (Sarolaner)',
+    description: 'A monthly chewable tablet that kills adult fleas and is used for the treatment and prevention of flea and tick infestations in dogs.',
+    commonUses: 'Flea and tick prevention, control of sarcoptic mange.',
+    sideEffects: 'Neurological side effects such as tremors, ataxia, and seizures have been reported in some dogs.',
+  },
 };
 
 

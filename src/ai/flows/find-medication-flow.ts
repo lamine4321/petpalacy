@@ -34,33 +34,39 @@ const findMedicationFlow = ai.defineFlow(
     name: 'findMedicationFlow',
     inputSchema: FindMedicationInputSchema,
     outputSchema: FindMedicationOutputSchema,
-    system: 'You are a helpful veterinary assistant. Your goal is to provide clear and concise information about pet medications. Use the available tools to look up medication details and then summarize them for the user. If a medication is not found, state that clearly.',
-    tools: [lookupMedication],
   },
   async (input) => {
     const {output} = await ai.generate({
-      prompt: `Please tell me about the medication: ${input.medicationName}.`,
+      prompt: `Please tell me about the medication: ${input.medicationName}. If you can find it, provide a summary.`,
+      system: 'You are a helpful veterinary assistant. Your goal is to provide clear and concise information about pet medications. Use the available tools to look up medication details and then summarize them for the user. If a medication is not found, state that clearly.',
+      tools: [lookupMedication],
     });
-    
-    // Check if the tool was used and if it returned data.
-    const toolOutput = output?.toolCalls?.[0]?.output;
 
+    // Case 1: The model used the tool and found the medication.
+    const toolOutput = output?.history?.[1]?.toolResponse?.parts?.[0]?.data;
     if (toolOutput && toolOutput.found) {
-        const medicationInfo = toolOutput.info;
-        const summary = `**${medicationInfo.name}**\n\n**Description:** ${medicationInfo.description}\n\n**Common Uses:** ${medicationInfo.commonUses}\n\n**Potential Side Effects:** ${medicationInfo.sideEffects}`;
-        return { summary, found: true };
+      const medicationInfo = toolOutput.info;
+      const summary = `**${medicationInfo.name}**\n\n**Description:** ${medicationInfo.description}\n\n**Common Uses:** ${medicationInfo.commonUses}\n\n**Potential Side Effects:** ${medicationInfo.sideEffects}`;
+      return { summary, found: true };
+    }
+    
+    // Case 2: The model used the tool but did NOT find the medication.
+    const toolRequest = output?.history?.[0]?.modelRequest?.contents?.[0]?.parts?.[0]?.toolRequest;
+    if (toolRequest) {
+      const requestedMed = toolRequest.input?.name;
+       return {
+          summary: `I could not find any information for "${requestedMed}". Please check the spelling and try again.`,
+          found: false,
+      };
     }
 
-    const toolRequest = output?.toolCalls?.[0]?.request;
-    const requestedMed = toolRequest?.input?.name;
-
-    if (requestedMed) {
-         return {
-            summary: `I could not find any information for "${requestedMed}". Please check the spelling and try again.`,
-            found: false,
-        };
+    // Case 3: The model did not use the tool and gave a direct text response.
+    const textResponse = output?.text;
+    if (textResponse) {
+        return { summary: textResponse, found: false };
     }
 
+    // Fallback case.
     return {
       summary: "I'm sorry, I couldn't process that request. Please try rephrasing your search.",
       found: false,
